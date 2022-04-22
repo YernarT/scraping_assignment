@@ -41,12 +41,3 @@ def get_data(page: int):
         result_set.append(data)
 
     return True, result_set
-
-    # with open('kovorking.json', 'w+') as file:
-    # json.dump(result_set, file, indent=2)
-
-    # with open('kovorking.txt', 'w+') as file:
-    #     for r in result_set:
-    #         for key, value in r.items():
-    #             file.write(f'{key}: {value}\n')
-    #         file.write('\n\n')
