@@ -4,10 +4,24 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-fastapi = "*"
-requests = "*"
-beautifulsoup4 = "*"
-uvicorn = "*"
+anyio = "==3.5.0"
+asgiref = "==3.5.0"
+beautifulsoup4 = "==4.11.1"
+certifi = "==2021.10.8"
+charset-normalizer = "==2.0.12"
+click = "==8.1.2"
+colorama = "==0.4.4"
+fastapi = "==0.75.2"
+h11 = "==0.13.0"
+idna = "==3.3"
+pydantic = "==1.9.0"
+requests = "==2.27.1"
+sniffio = "==1.2.0"
+soupsieve = "==2.3.2.post1"
+starlette = "==0.17.1"
+typing-extensions = "==4.2.0"
+urllib3 = "==1.26.9"
+uvicorn = "==0.17.6"
 
 [dev-packages]
 
