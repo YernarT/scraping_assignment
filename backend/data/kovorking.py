@@ -1,11 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 
-BASE_URL = 'https://astana.spravker.ru'
+from . import BASE_URL
 
 
 def get_data(page: int):
-    response = requests.get(f'{BASE_URL}/kovorking/page-{page}/')
+    url = f'{BASE_URL}/kovorking/page-{page}/'
+    response = requests.get(url)
+
     if response.status_code != 200:
         return False, {'message': 'nonexistent page'}
 
@@ -40,4 +42,4 @@ def get_data(page: int):
 
         result_set.append(data)
 
-    return True, result_set
+    return True, {'data': result_set, 'data_count': len(result_set), 'url': url}
