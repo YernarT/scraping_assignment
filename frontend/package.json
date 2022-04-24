@@ -1,0 +1,71 @@
+{
+	"name": "scraping_example_web",
+	"version": "1.0.0",
+	"private": false,
+	"description": "爬虫案例前端",
+	"keywords": [
+		"react",
+		"typescript",
+		"frontend",
+		"vite"
+	],
+	"author": {
+		"name": "Yernar.T",
+		"email": "toktaryernar@gmail.com",
+		"url": "https://github.com/YernarT"
+	},
+	"bugs": {
+		"url": "https://github.com/YernarT/scraping_assignment/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/YernarT/scraping_assignment"
+	},
+	"license": "MIT",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc && vite build",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@ant-design/icons": "^4.7.0",
+		"ahooks": "^3.3.8",
+		"antd": "^4.20.0",
+		"axios": "^0.25.0",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"react-router-dom": "5.3.0",
+		"styled-components": "^5.3.5"
+	},
+	"devDependencies": {
+		"@types/node": "^17.0.12",
+		"@types/react": "^17.0.33",
+		"@types/react-dom": "^17.0.10",
+		"@types/react-router-dom": "^5.3.3",
+		"@types/styled-components": "^5.1.25",
+		"@typescript-eslint/eslint-plugin": "^5.10.1",
+		"@typescript-eslint/parser": "^5.10.1",
+		"@vitejs/plugin-react": "^1.0.7",
+		"eslint": "^8.7.0",
+		"eslint-define-config": "^1.2.3",
+		"eslint-plugin-react": "^7.28.0",
+		"eslint-plugin-react-hooks": "^4.3.0",
+		"less": "^4.1.2",
+		"prettier": "^2.5.1",
+		"typescript": "^4.4.4",
+		"vite": "^2.7.2",
+		"vite-plugin-imp": "^2.1.7"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
+}
