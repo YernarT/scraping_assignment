@@ -4,7 +4,7 @@ export const LayoutBoxStyledBox = styled.div`
 	height: inherit;
 
 	.content-wrap {
-		height: inherit;
+		height: calc(100% - 64px);
 		display: flex;
 
 		.content {
