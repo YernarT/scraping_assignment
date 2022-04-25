@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const LayoutBoxStyledBox = styled.div`
 	height: inherit;
+	position: relative;
 
 	.content-wrap {
 		height: calc(100% - 64px);
@@ -11,7 +12,7 @@ export const LayoutBoxStyledBox = styled.div`
 			flex-grow: 1;
 			overflow: hidden auto;
 
-			padding: 0 20px;
+			padding: 16px 16px 0 16px;
 		}
 	}
 `;
