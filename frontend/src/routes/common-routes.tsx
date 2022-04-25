@@ -18,20 +18,12 @@ const commonRoutes: RouteProps[] = [
 		title: 'API Doc | Scraping',
 	},
 	{
-		path: '/404',
+		path: '/feedback',
 		component: lazy(() => import('@/pages/common/FeedbackPage')),
 		fallback: <CommonLoading />,
 		auth: false,
 		role: ['guest'],
 		title: 'Обратная связь | Scraping',
-	},
-	{
-		path: '/404',
-		component: lazy(() => import('@/pages/common/PageNotFoundPage')),
-		fallback: <CommonLoading />,
-		auth: false,
-		role: ['guest'],
-		title: '404 | Scraping',
 	},
 ];
 
