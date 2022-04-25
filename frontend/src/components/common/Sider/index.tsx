@@ -1,7 +1,8 @@
 import type { MenuProps } from 'antd';
 
 import { useHistory } from 'react-router-dom';
-import { useBoolean } from 'ahooks';
+import { useBoolean, useCreation } from 'ahooks';
+import { strCount } from '@/utils';
 
 import { Menu, Button } from 'antd';
 import {
@@ -40,7 +41,7 @@ const siderMenuItems: MenuItem[] = [
 			getItem('Рестораны', '/restaurant'),
 		],
 	),
-	getItem('Обратная связь', '/feadback', <MailOutlined />),
+	getItem('Обратная связь', '/feedback', <MailOutlined />),
 ];
 
 export default function Sider() {
@@ -53,11 +54,22 @@ export default function Sider() {
 		history.push(urlPath);
 	};
 
+	const defaultSelectedKeys = useCreation(() => {
+		let { pathname } = history.location;
+
+		if (strCount(pathname, '/') > 1) {
+			let paths = pathname.split('/');
+			return ['/' + paths[paths.length - 1]];
+		}
+
+		return [pathname];
+	}, []);
+
 	const siderMenu = (
 		<Menu
 			className="sider-menu"
 			mode={'inline'}
-			defaultSelectedKeys={['/']}
+			defaultSelectedKeys={defaultSelectedKeys}
 			defaultOpenKeys={['/astana_spravker']}
 			style={{ height: '100%', borderRight: 0 }}
 			items={siderMenuItems}
