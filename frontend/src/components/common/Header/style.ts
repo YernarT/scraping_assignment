@@ -9,7 +9,7 @@ export const HeaderStyledBox = styled(Header)`
 		color: #fff;
 
 		margin: 0;
-		
+
 		user-select: none;
 	}
 `;

@@ -11,8 +11,7 @@ export const LayoutBoxStyledBox = styled.div`
 			flex-grow: 1;
 			overflow: hidden auto;
 
-			padding: 20px;
-			padding-bottom: 0;
+			padding: 0 20px;
 		}
 	}
 `;
