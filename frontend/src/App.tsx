@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ConfigProvider as AntdConfigProvider } from 'antd';
 import ru_RU from 'antd/lib/locale/ru_RU';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-import { RouteGuard, CssBaseLine } from '@/components/common';
+import { RouteGuard, CssBaseLine, LayoutBox } from '@/components/common';
 
 import theme from '@/assets/theme';
 import routes from '@/routes';
@@ -16,8 +16,11 @@ function App() {
 				<BrowserRouter>
 					{/* 全局样式 */}
 					<CssBaseLine />
-					{/* 路由守卫 */}
-					<RouteGuard routes={routes} />
+					{/* 布局盒 */}
+					<LayoutBox>
+						{/* 路由守卫 */}
+						<RouteGuard routes={routes} />
+					</LayoutBox>
 				</BrowserRouter>
 			</AntdConfigProvider>
 		</StyledThemeProvider>
