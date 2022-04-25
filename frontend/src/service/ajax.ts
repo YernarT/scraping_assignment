@@ -1,21 +1,15 @@
-import type { userStateProperties } from '@/store';
-
 import axios from 'axios';
-import { localStorage } from '@/utils';
 
 export const apiServerInstance = axios.create({
-	baseURL: 'http://localhost:8000',
+	// baseURL: 'http://localhost:8000',
+	baseURL: 'https://scraping-astana-spravker.herokuapp.com',
 	validateStatus: status => status >= 200 && status < 300,
 });
 
 // Request interceptor
 apiServerInstance.interceptors.request.use(config => {
 	// Every time the jwt is updated in the page, the localstorage needs to be updated together
-	const { jwt } = localStorage.get('user') as userStateProperties;
-
-	if (jwt && config.headers) {
-		config.headers['Authorization'] = `Bearer ${jwt}`;
-	}
+	// const { jwt } = localStorage.get('user') as userStateProperties;
 
 	return config;
 });
@@ -29,7 +23,7 @@ apiServerInstance.interceptors.response.use(
 
 			if (status >= 500) {
 				return Promise.reject({
-					message: 'The server crashed...',
+					message: 'Ошибка сервера, свяжитесь с разработчиком',
 				});
 			}
 
@@ -38,13 +32,8 @@ apiServerInstance.interceptors.response.use(
 			}
 		}
 
-		if (error.message === 'Network Error') {
-			return Promise.reject({
-				message: 'Server failed, try again later',
-			});
-		}
-
-		console.error('Error in request: ', error);
-		return Promise.reject(error);
+		return Promise.reject({
+			message: 'Падение сервера, свяжитесь с разработчиком',
+		});
 	},
 );
