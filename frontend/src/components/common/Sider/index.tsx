@@ -1,5 +1,7 @@
 import type { MenuProps } from 'antd';
 
+import { useHistory } from 'react-router-dom';
+
 import { Menu } from 'antd';
 import { ApiOutlined, BugOutlined, MailOutlined } from '@ant-design/icons';
 import { SiderStyledBox } from './style';
@@ -36,10 +38,11 @@ const siderMenuItems: MenuItem[] = [
 ];
 
 export default function Sider() {
-	const handleSelect = ({ keyPath }: { keyPath: string[] }) => {
-		let urlPath = keyPath.join('');
+	const history = useHistory();
 
-		console.log(urlPath);
+	const handleSelect = ({ keyPath }: { keyPath: string[] }) => {
+		let urlPath = keyPath.reverse().join('');
+		history.push(urlPath);
 	};
 
 	return (
