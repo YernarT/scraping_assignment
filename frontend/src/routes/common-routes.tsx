@@ -19,6 +19,14 @@ const commonRoutes: RouteProps[] = [
 	},
 	{
 		path: '/404',
+		component: lazy(() => import('@/pages/common/FeedbackPage')),
+		fallback: <CommonLoading />,
+		auth: false,
+		role: ['guest'],
+		title: 'Обратная связь | Scraping',
+	},
+	{
+		path: '/404',
 		component: lazy(() => import('@/pages/common/PageNotFoundPage')),
 		fallback: <CommonLoading />,
 		auth: false,
