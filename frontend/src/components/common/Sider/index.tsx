@@ -34,7 +34,7 @@ const siderMenuItems: MenuItem[] = [
 			getItem('Рестораны', '/restaurant'),
 		],
 	),
-	getItem('Feedback', '/feadback', <MailOutlined />),
+	getItem('Обратная связь', '/feadback', <MailOutlined />),
 ];
 
 export default function Sider() {
