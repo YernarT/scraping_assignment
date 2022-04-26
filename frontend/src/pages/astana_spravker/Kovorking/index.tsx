@@ -1,5 +1,6 @@
 import type { scrapingData } from '@/service/api/astana_sparvker';
 
+import { useEffect } from 'react';
 import { useRequest, useSetState } from 'ahooks';
 import { reqGetKovorking } from '@/service/api/astana_sparvker';
 
@@ -27,25 +28,44 @@ export default function KovorkingPage() {
 
 		dataCount: number;
 		dataSet: scrapingData[];
+		filteredData: scrapingData[];
 	}>({
 		filterMode: 'all',
 		page: 1,
 
 		dataCount: 0,
 		dataSet: [],
+		filteredData: [],
 	});
 
+	// 获取 kovorking 数据
 	const { loading } = useRequest(() => reqGetKovorking(state.page), {
 		refreshDeps: [state.page],
 
 		onSuccess({ data, data_count }) {
-			setState({ dataSet: data, dataCount: data_count });
+			setState({ dataSet: data, filteredData: data, dataCount: data_count });
 		},
 
 		onError({ message }) {
 			antdMessage.error(message);
 		},
 	});
+
+	// 当过滤模式改变 或 数据改变时 触发过滤
+	useEffect(() => {
+		let newFilteredData;
+
+		if (state.filterMode === 'hasPhone') {
+			newFilteredData = state.dataSet.filter(data => data.phone !== null);
+		} else {
+			newFilteredData = state.dataSet;
+		}
+
+		setState({
+			filteredData: newFilteredData,
+			dataCount: newFilteredData.length,
+		});
+	}, [state.dataSet, state.filterMode]);
 
 	return (
 		<KovorkingStyledBox>
@@ -57,7 +77,10 @@ export default function KovorkingPage() {
 						value={state.filterMode}
 						style={{ width: 100 }}
 						onChange={value =>
-							setState(prevState => ({ ...prevState, filterMode: value }))
+							setState(prevState => ({
+								...prevState,
+								filterMode: value,
+							}))
 						}>
 						<Option value="all">Все</Option>
 						<Option value="hasPhone">С номерам</Option>
@@ -113,7 +136,7 @@ export default function KovorkingPage() {
 					title={false}
 					paragraph={{ rows: 4 }}>
 					<Typography>
-						{state.dataSet.map((data, idx) => (
+						{state.filteredData.map((data, idx) => (
 							<pre key={idx}>{JSON.stringify(data, null, 2)}</pre>
 						))}
 						{state.dataCount === 0 && <Empty />}
