@@ -1,11 +1,11 @@
 import { apiServerInstance } from '@/service/ajax';
 
-export type scrapingData = Array<{
+export type scrapingData = {
 	name: string;
 	site: string;
 	address: string;
 	phone: string | null;
-}>;
+};
 
 interface ScrapingResult {
 	data: scrapingData[];
