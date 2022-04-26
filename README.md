@@ -9,12 +9,19 @@
 
 ## 结果报告 (Result)
 
-演示地址: [暂无]()
+演示地址: [yona-scraping.netlify.app](yona-scraping.netlify.app)
 
 ### 基本概况
 
 爬取网站: [https://astana.spravker.ru](https://astana.spravker.ru)
 
-- 总数据数: 暂未统计
-- 抓取数据类型: 暂未统计
-- 抓取字段: 暂未统计
+- 总数据数: **1000+**
+- 抓取数据类型:
+  - 办公室
+  - 商店
+  - 餐厅
+- 抓取字段:
+  - `name`
+  - `address`
+  - `site`
+  - `phone`
