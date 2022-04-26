@@ -29,7 +29,7 @@ export default function APIDocPage() {
 					вакансии в Нур-Султане, отзывы об организациях.
 				</Paragraph>
 
-				<ApiBox />
+				{/* <ApiBox /> */}
 			</Typography>
 		</APIDocStyledBox>
 	);

@@ -1,5 +1,125 @@
+import type { scrapingData } from '@/service/api/astana_sparvker';
+
+import { useRequest, useSetState } from 'ahooks';
+import { reqGetKovorking } from '@/service/api/astana_sparvker';
+
+import {
+	Statistic,
+	Space,
+	Button,
+	InputNumber,
+	Divider,
+	Typography,
+	Select,
+	message as antdMessage,
+	Skeleton,
+	Empty,
+} from 'antd';
 import { KovorkingStyledBox } from './style';
 
+const { Paragraph } = Typography;
+const { Option } = Select;
+
 export default function KovorkingPage() {
-	return <KovorkingStyledBox>KovorkingPage</KovorkingStyledBox>;
+	const [state, setState] = useSetState<{
+		filterMode: 'all' | 'hasPhone';
+		page: number;
+
+		dataCount: number;
+		dataSet: scrapingData[];
+	}>({
+		filterMode: 'all',
+		page: 1,
+
+		dataCount: 0,
+		dataSet: [],
+	});
+
+	const { loading } = useRequest(() => reqGetKovorking(state.page), {
+		refreshDeps: [state.page],
+
+		onSuccess({ data, data_count }) {
+			setState({ dataSet: data, dataCount: data_count });
+		},
+
+		onError({ message }) {
+			antdMessage.error(message);
+		},
+	});
+
+	return (
+		<KovorkingStyledBox>
+			<div className="toolbar">
+				<Space align="center" className="filter">
+					<Paragraph>Парам. фильтра</Paragraph>
+					<Select
+						placeholder="Парам. фильтра"
+						value={state.filterMode}
+						style={{ width: 100 }}
+						onChange={value =>
+							setState(prevState => ({ ...prevState, filterMode: value }))
+						}>
+						<Option value="all">Все</Option>
+						<Option value="hasPhone">С номерам</Option>
+					</Select>
+				</Space>
+
+				<Space align="center" className="pagination">
+					<Button
+						type="text"
+						disabled={state.page === 1}
+						onClick={() =>
+							setState(prevState => ({
+								...prevState,
+								page: prevState.page - 1,
+							}))
+						}>
+						Пред. стр.
+					</Button>
+					<InputNumber
+						value={state.page}
+						onChange={value =>
+							setState(prevState => ({ ...prevState, page: value }))
+						}
+						min={1}
+						addonAfter={<span>стр.</span>}
+					/>
+					<Button
+						type="text"
+						onClick={() =>
+							setState(prevState => ({
+								...prevState,
+								page: prevState.page + 1,
+							}))
+						}>
+						след. стр.
+					</Button>
+				</Space>
+			</div>
+
+			<Divider />
+
+			<Space direction="vertical" style={{ width: '100%' }} size={10}>
+				<Typography>
+					<Statistic
+						title="Объем данных текущей страницы"
+						value={state.dataCount}
+					/>
+				</Typography>
+
+				<Skeleton
+					active
+					loading={loading}
+					title={false}
+					paragraph={{ rows: 4 }}>
+					<Typography>
+						{state.dataSet.map((data, idx) => (
+							<pre key={idx}>{JSON.stringify(data, null, 2)}</pre>
+						))}
+						{state.dataCount === 0 && <Empty />}
+					</Typography>
+				</Skeleton>
+			</Space>
+		</KovorkingStyledBox>
+	);
 }
