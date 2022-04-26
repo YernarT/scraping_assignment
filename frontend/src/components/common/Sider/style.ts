@@ -24,11 +24,13 @@ export const SiderStyledBox = styled(Sider)`
 
 export const MiniSiderStylexBox = styled.aside<{ siderCollapsed: boolean }>`
 	display: none;
+	pointer-events: ${({ siderCollapsed }) => (siderCollapsed ? 'auto' : 'none')};
 	width: calc(100% - 4px);
 
 	position: absolute;
 	top: 64px;
 	left: 0;
+	z-index: ${({ theme }) => theme.zIndex.sider};
 
 	/* 此处使用 transform属性 会影响 trigger button 的定位 */
 
@@ -40,6 +42,8 @@ export const MiniSiderStylexBox = styled.aside<{ siderCollapsed: boolean }>`
 		position: fixed;
 		right: 24px;
 		bottom: 36px;
+
+		pointer-events: auto;
 	}
 
 	.sider-menu {

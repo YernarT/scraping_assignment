@@ -26,6 +26,9 @@ const theme: DefaultTheme = {
 			`,
 		},
 	},
+	zIndex: {
+		sider: 1000,
+	},
 	typography: {
 		title: {
 			fontWeight: 600,

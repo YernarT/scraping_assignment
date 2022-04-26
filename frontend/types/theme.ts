@@ -32,6 +32,10 @@ declare module 'styled-components' {
 			};
 		};
 
+		zIndex: {
+			sider: number;
+		};
+
 		typography: {
 			title: {
 				fontWeight: number;
