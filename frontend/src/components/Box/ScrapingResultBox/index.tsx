@@ -5,6 +5,7 @@ import type {
 
 import { useEffect } from 'react';
 import { useRequest, useSetState } from 'ahooks';
+import { CSVLink } from 'react-csv';
 
 import {
 	Space,
@@ -17,6 +18,8 @@ import {
 	Skeleton,
 	Statistic,
 	Empty,
+	Row,
+	Col,
 } from 'antd';
 import { ScrapingResultBoxStyled } from './style';
 
@@ -128,13 +131,28 @@ export default function ScrapingResultBox({ service }: ScrapingResultBoxProps) {
 
 			<Divider />
 
-			<Space direction="vertical" style={{ width: '100%' }} size={10}>
-				<Typography>
-					<Statistic
-						title="Объем данных текущей страницы"
-						value={state.dataCount}
-					/>
-				</Typography>
+			<Space
+				direction="vertical"
+				style={{ width: '100%' }}
+				size={10}
+				className="data-panel">
+				<div className="header">
+					<Typography>
+						<Statistic
+							title="Объем данных текущей страницы"
+							value={state.dataCount}
+						/>
+					</Typography>
+
+					<CSVLink
+						className="download-csv"
+						data={[
+							['name', 'site', 'address', 'phone'],
+							...state.filteredData.map(data => Object.values(data)),
+						]}>
+						Cкачать Excel формат
+					</CSVLink>
+				</div>
 
 				<Skeleton
 					active

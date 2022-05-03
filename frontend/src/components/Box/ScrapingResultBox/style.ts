@@ -36,4 +36,16 @@ export const ScrapingResultBoxStyled = styled.div`
 			}
 		}
 	}
+
+	.data-panel {
+		.header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			.download-csv {
+				line-height: 1.5715;
+			}
+		}
+	}
 `;
