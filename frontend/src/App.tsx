@@ -5,7 +5,8 @@ import { useAd } from '@/hooks';
 import { ConfigProvider as AntdConfigProvider } from 'antd';
 import ru_RU from 'antd/lib/locale/ru_RU';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-import { RouteGuard, CssBaseLine, LayoutBox } from '@/components/common';
+import { RouteGuard, CssBaseLine } from '@/components/common';
+import { LayoutBox } from '@/components/Box';
 
 import theme from '@/assets/theme';
 import routes from '@/routes';
