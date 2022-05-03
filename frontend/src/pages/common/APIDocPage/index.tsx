@@ -1,5 +1,5 @@
 import { Typography, Divider } from 'antd';
-import { ApiBox } from '@/components/common';
+import { ApiBox } from '@/components/Box';
 import { APIDocStyledBox } from './style';
 
 const { Title, Paragraph, Text, Link } = Typography;
