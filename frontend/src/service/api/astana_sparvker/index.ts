@@ -7,7 +7,7 @@ export type scrapingData = {
 	phone: string | null;
 };
 
-interface ScrapingResult {
+export interface ScrapingResult {
 	data: scrapingData[];
 	data_count: number;
 	url: string;
@@ -19,7 +19,7 @@ export const reqGetKovorking = (page: number): Promise<ScrapingResult> =>
 
 // shop
 export const reqGetShop = (page: number): Promise<ScrapingResult> =>
-	apiServerInstance.get(`/scraping/Shop/${page}/`);
+	apiServerInstance.get(`/scraping/shop/${page}/`);
 
 // restaurant
 export const reqGetRestaurant = (page: number): Promise<ScrapingResult> =>
