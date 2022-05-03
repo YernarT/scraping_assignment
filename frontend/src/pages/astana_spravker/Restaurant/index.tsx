@@ -1,5 +1,7 @@
-import { RestaurantStyledBox } from './style';
+import { reqGetRestaurant } from '@/service/api/astana_sparvker';
+
+import { ScrapingResultBox } from '@/components/Box';
 
 export default function RestaurantPage() {
-	return <RestaurantStyledBox></RestaurantStyledBox>;
+	return <ScrapingResultBox service={reqGetRestaurant} />;
 }

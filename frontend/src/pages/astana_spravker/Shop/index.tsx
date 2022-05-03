@@ -1,5 +1,7 @@
-import { ShopStyledBox } from './style';
+import { reqGetShop } from '@/service/api/astana_sparvker';
+
+import { ScrapingResultBox } from '@/components/Box';
 
 export default function ShopPage() {
-	return <ShopStyledBox></ShopStyledBox>;
+	return <ScrapingResultBox service={reqGetShop} />;
 }
